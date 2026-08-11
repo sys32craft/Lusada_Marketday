@@ -38,7 +38,7 @@ def calculate_events():
 
         if cycle_position == 0:
 
-            status = "Today is an Event Day"
+            status = "Today is market day"
 
             remaining = INTERVAL_DAYS
 
@@ -50,7 +50,7 @@ def calculate_events():
 
         else:
 
-            status = "Not an Event Day"
+            status = "Not a market day"
 
             remaining = (
                 INTERVAL_DAYS -

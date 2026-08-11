@@ -1,16 +1,27 @@
-FROM python:3.14.6-slim-trixie
+FROM python:3.14-slim
 
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_DEFAULT_TIMEOUT=120
 
 WORKDIR /project
 
-# Install dependencies from the project root
+# Install dependencies first so Docker can cache this layer
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project
+RUN pip install --no-cache-dir \
+    --timeout 120 \
+    --retries 10 \
+    -r requirements.txt
+
+# Copy application
 COPY . .
 
+# NiceGUI
 EXPOSE 8080
 
-CMD ["python", "app/main.py"]
+# API
+EXPOSE 5000
+
+# Start API and NiceGUI
+CMD ["sh", "-c", "python app/api.py & python app/main.py"]

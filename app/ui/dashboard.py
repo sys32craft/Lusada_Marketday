@@ -9,7 +9,7 @@ def dashboard():
     data = calculate_events()
 
     is_event_day = (
-        data["status"] == "Today is an Event Day"
+        data["status"] == "Today is market day"
     )
 
     cycle_percent = (

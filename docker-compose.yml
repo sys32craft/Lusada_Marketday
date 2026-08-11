@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: lusada-marketday
+
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      PIP_DEFAULT_TIMEOUT: "120"
+      API_PORT: "5000"
+
+    restart: unless-stopped

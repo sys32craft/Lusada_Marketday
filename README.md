@@ -110,7 +110,7 @@ The application always knows:
 
 - Today's status
     
-- Whether today is an event day
+- Whether today is market day
     
 - Days remaining until the next event
     
@@ -219,7 +219,7 @@ Displays:
 
 Examples:
 
-Today is an Event Day
+Today is Market Day
 
 or
 
@@ -494,7 +494,7 @@ Difference % Interval
 
 If remainder equals zero:
 
-Today is an Event Day.
+Today is Market Day.
 
 Otherwise:
 
